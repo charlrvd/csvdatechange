@@ -1,7 +1,6 @@
 import re
 from datetime import datetime
 from settings import Settings
-#import inspect
 """
 The function will open a file specified in the settings
 The file should be of csv format or on a similar format with defined 
@@ -51,6 +50,8 @@ def main(s):
         # convert the dates to the new format
         for d in dates:
             dt_format = datetime.strptime(d, s.in_format)
+            if s.timezone:
+                dt_format = s.timezone.localize(dt_format)
             dest_date = dt_format.strftime(s.out_format)
             newdates.append(dest_date)
 

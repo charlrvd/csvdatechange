@@ -8,3 +8,4 @@ class Settings:
         self.date_index = [7,8,9]
         self.split_char = ','
         self.csv_row_len = len(self.headers.split(self.split_char))
+        self.timezone = None

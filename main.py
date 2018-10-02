@@ -1,11 +1,11 @@
-#from settings import Settings
-from settingstest import Settings
 import csvdate
+from sacramento_settings import Settings as Sacramento
+from settings import Settings
 
 def main():
-    settings = Settings()
+    settings = Sacramento()
     csvdate.main(settings)
-    print('Modified file create: {}'.format(settings.out_file))
+    print('Modified file written to: {}'.format(settings.out_file))
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,3 @@
-import pytz
 from pytz import timezone
 
 class Settings:
@@ -11,4 +10,5 @@ class Settings:
         self.date_index = [8]
         self.split_char = ','
         self.csv_row_len = len(self.headers.split(self.split_char))
-        self.timezone = None
+        #self.timezone = timezone('US/Pacific')
+        self.timezone = timezone('US/Eastern')
