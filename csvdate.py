@@ -52,6 +52,8 @@ def rewrite(s):
             dt_format = datetime.strptime(d, s.in_format)
             if s.timezone:
                 dt_format = s.timezone.localize(dt_format)
+            if s.out_timezone:
+                dt_format = dt_format.astimezone(s.out_timezone)
             dest_date = dt_format.strftime(s.out_format)
             newdates.append(dest_date)
 

@@ -9,3 +9,4 @@ class Settings:
         self.split_char = ','
         self.csv_row_len = len(self.headers.split(self.split_char))
         self.timezone = None
+        self.out_timezone = None

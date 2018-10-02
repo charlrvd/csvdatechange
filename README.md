@@ -17,17 +17,30 @@ The changed dateformat would be `%Y/%m/%d-%H.%M.%S(%Z)` ex:`2008/05/21-00.00.00(
 
 ![](diff.png?raw=true)
 
-The settings file used to make this transformation is [here](settingstest.py)
+The settings file used to make this transformation is [here](sacramento_settings.py)
 
 The list of config to do in settings is as follow:
 - `in_format` is a datetime format as defined in a below link
 - `out_format` is the desired output format
 - `in_file` and out_file are the name of the file input and output to write to
 - `date_index` is a list of integer to specify the date column (start at index 0)
+
   This could be removed in a future version with a re.match on the first line of data
 - `split_char` is the column delimiting character
 - `timezone` is the input timezone is there is any. Can be set to `None`
-  Script could later need out_timezone to output the time on another timezone
+- `out_timezone` is the output timezone. will convert to the out time
+
+
+To list all timezone available in pytz:
+```python
+>>> from pytz import all_timezones
+>>> for tz in all_timezones:
+...     print(tz)
+... 
+Africa/Abidjan
+Africa/Accra
+[...]
+```
 
 ### How to use
 

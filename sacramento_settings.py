@@ -10,5 +10,6 @@ class Settings:
         self.date_index = [8]
         self.split_char = ','
         self.csv_row_len = len(self.headers.split(self.split_char))
-        #self.timezone = timezone('US/Pacific')
         self.timezone = timezone('US/Eastern')
+        #self.timezone = timezone('America/Los_Angeles') # original file is EDT which is not sacramento local time
+        self.out_timezone = timezone('Europe/London')

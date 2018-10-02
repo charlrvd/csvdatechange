@@ -106,3 +106,4 @@ venv.bak/
 # project specific
 *.swp
 *.pyc
+out_file.csv
