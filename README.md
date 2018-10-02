@@ -39,7 +39,7 @@ import csvdate
 from sacramento_settings import Settings as Sacramento
 [...]
   settings = Sacramento()
-  csvdate.main(settings)
+  csvdate.rewrite(settings)
 ```
 
 If is possible to loop over a list of csv of same format to modify all of them a the same time

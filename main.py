@@ -4,7 +4,7 @@ from settings import Settings
 
 def main():
     settings = Sacramento()
-    csvdate.main(settings)
+    csvdate.rewrite(settings)
     print('Modified file written to: {}'.format(settings.out_file))
 
 if __name__ == '__main__':

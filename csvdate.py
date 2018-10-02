@@ -11,7 +11,7 @@ Set the current and wished date format on the settings file
 Set the output file name and run the script to get the new file with new dates
 """
 
-def main(s):
+def rewrite(s):
     # test the settings in the s variable
     try:
         isinstance(s, Settings)
