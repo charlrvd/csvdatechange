@@ -29,14 +29,36 @@ def rewrite(s):
         # if the first line match the header
         # write the header to the out_file
         # this will flush the out_file if it already exists
+
+        # split the line by settings split character
+        col = line.split(s.split_char)
+        # check the index of dates matching input format
+        if s.date_index is None:
+            s.date_index = []
+            date_cursor = 0
+        # check if header and list of column matching input format
+        # add result to the settings
+        if s.headers is None or len(s.date_index) < 1:
+            for c in col:
+                try:
+                    datetime.strptime(c, s.in_format)
+                    s.header = False
+                    s.date_index.append(date_cursor)
+                    date_cursor += 1
+                except ValueError:
+                    date_cursor += 1
+            if len(s.date_index) < 1:
+                s.date_index = None
+            if s.headers is None:
+                s.headers = line
+                s.csv_row_len = len(s.headers.split(s.split_char))
+
         if re.match(r'^{}$'.format(s.headers), line):
             with open(s.out_file, 'w') as f_out:
                 f_out.write(s.headers)
                 f_out.write('\n')
                 f_out.closed
             continue
-        # split the line by settings split character
-        col = line.split(s.split_char)
         dates = []
         # get a list of dates column from the setting index variable
         try:

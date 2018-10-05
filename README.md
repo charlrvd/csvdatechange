@@ -22,13 +22,14 @@ The settings file used to make this transformation is [here](sacramento_settings
 The list of config to do in settings is as follow:
 - `in_format` is a datetime format as defined in a below link
 - `out_format` is the desired output format
-- `in_file` and out_file are the name of the file input and output to write to
-- `date_index` is a list of integer to specify the date column (start at index 0)
-
-  This could be removed in a future version with a re.match on the first line of data
+- `in_file` and `out_file` are the name of the file input and output to write to
 - `split_char` is the column delimiting character
+Above are obligatory settings, below are optionnal settings:
+
+- `date_index` is a list of integer to specify the date column (start at index 0), autodiscovered if set to `None`
+- `headers` is the header line defining column name. Can be set to `None` and will be auto discovered
 - `timezone` is the input timezone is there is any. Can be set to `None`
-- `out_timezone` is the output timezone. will convert to the out time
+- `out_timezone` is the output timezone. will convert to the out time. Can be set to `None`
 
 
 To list all timezone available in pytz:
@@ -46,7 +47,13 @@ Africa/Accra
 
 For every type of csv you will need to new settings file containing a `class Settings`
 
-In a main file ([example](main.py)) you can import the settings and the function
+The main function is present in the file [csvdate.py](csvdate.py)
+
+Current implementation is importing the function in [main.py](main.py) and run from here.
+
+The `csvdate.py` file needs to import a class `Settings` if you change the filename, reflect that change inside the main function file.
+
+In the main file ([example](main.py)), import the settings and the function
 ```python
 import csvdate
 from sacramento_settings import Settings as Sacramento
@@ -64,7 +71,7 @@ It would require to update the settings of out_file inside the loop after each f
 [Documentation link](https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior)
 
 ## Tips to convert csv
-convert windows generated csv with ^M newline character
+Convert windows generated csv with ^M newline character with vim
 ```
 :%s/<Ctrl-V><Ctrl-M>/\r/g
 ```
