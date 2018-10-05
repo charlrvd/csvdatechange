@@ -24,6 +24,7 @@ The list of config to do in settings is as follow:
 - `out_format` is the desired output format
 - `in_file` and `out_file` are the name of the file input and output to write to
 - `split_char` is the column delimiting character
+
 Above are obligatory settings, below are optionnal settings:
 
 - `date_index` is a list of integer to specify the date column (start at index 0), autodiscovered if set to `None`
